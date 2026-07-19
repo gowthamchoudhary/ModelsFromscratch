@@ -6,7 +6,7 @@ This repository contains machine learning models implemented from scratch using 
 
 | Model | Folder | Description |
 | --- | --- | --- |
-| Linear Regression From Scratch | [Linear_Regression_From_Scratch](Linear_Regression_From_Scratch) | Predicts exam scores from study hours using gradient descent. |
+| Linear Regression From Scratch | [Linear_Regression_From_Scratch](Linear_Regression_From_Scratch) | Predicts exam scores from study hours using gradient descent and the closed-form normal equation. |
 | Neural Network From Scratch | [Neural_Network_From_Scratch](Neural_Network_From_Scratch) | Classifies handwritten digits using a simple feedforward neural network built with NumPy. |
 
 ## Repository Structure
@@ -15,6 +15,7 @@ This repository contains machine learning models implemented from scratch using 
 ModelsFromscratch/
 +-- Linear_Regression_From_Scratch/
 |   +-- linearRegressionFromScratch.ipynb
+|   +-- closed_form_linearRegression.ipynb
 |   +-- study_scores_noisy_100.csv
 |   +-- README.md
 +-- Neural_Network_From_Scratch/
