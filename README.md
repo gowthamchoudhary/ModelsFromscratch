@@ -7,6 +7,7 @@ This repository contains machine learning models implemented from scratch using 
 | Model | Folder | Description |
 | --- | --- | --- |
 | Linear Regression From Scratch | [Linear_Regression_From_Scratch](Linear_Regression_From_Scratch) | Predicts exam scores from study hours using gradient descent and the closed-form normal equation. |
+| Ridge Regression From Scratch | [RidgeRegression_From_Scratch](RidgeRegression_From_Scratch) | Implements ridge regression with L2 regularization using the closed-form solution and compares it with scikit-learn. |
 | Neural Network From Scratch | [Neural_Network_From_Scratch](Neural_Network_From_Scratch) | Classifies handwritten digits using a simple feedforward neural network built with NumPy. |
 
 ## Repository Structure
@@ -17,6 +18,9 @@ ModelsFromscratch/
 |   +-- linearRegressionFromScratch.ipynb
 |   +-- closed_form_linearRegression.ipynb
 |   +-- study_scores_noisy_100.csv
+|   +-- README.md
++-- RidgeRegression_From_Scratch/
+|   +-- RidgeRegressionFromScratch.ipynb
 |   +-- README.md
 +-- Neural_Network_From_Scratch/
 |   +-- NeuralNetworkFromScracth.ipynb
@@ -32,11 +36,12 @@ The notebooks use common Python data science libraries:
 - NumPy
 - Pandas
 - Matplotlib
+- scikit-learn
 
 Install them with:
 
 ```bash
-pip install numpy pandas matplotlib
+pip install numpy pandas matplotlib scikit-learn
 ```
 
 ## How to Use
