@@ -7,6 +7,7 @@ This repository contains machine learning models implemented from scratch using 
 | Model | Folder | Description |
 | --- | --- | --- |
 | Linear Regression From Scratch | [Linear_Regression_From_Scratch](Linear_Regression_From_Scratch) | Predicts exam scores from study hours using gradient descent and the closed-form normal equation. |
+| Logistic Regression From Scratch | [Logistic_Regression](Logistic_Regression) | Classifies breast cancer samples using sigmoid activation and gradient descent. |
 | Ridge Regression From Scratch | [RidgeRegression_From_Scratch](RidgeRegression_From_Scratch) | Implements ridge regression with L2 regularization using the closed-form solution and compares it with scikit-learn. |
 | Neural Network From Scratch | [Neural_Network_From_Scratch](Neural_Network_From_Scratch) | Classifies handwritten digits using a simple feedforward neural network built with NumPy. |
 
@@ -18,6 +19,9 @@ ModelsFromscratch/
 |   +-- linearRegressionFromScratch.ipynb
 |   +-- closed_form_linearRegression.ipynb
 |   +-- study_scores_noisy_100.csv
+|   +-- README.md
++-- Logistic_Regression/
+|   +-- logistic_from_scratch.ipynb
 |   +-- README.md
 +-- RidgeRegression_From_Scratch/
 |   +-- RidgeRegressionFromScratch.ipynb
