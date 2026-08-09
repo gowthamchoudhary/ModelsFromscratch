@@ -10,6 +10,7 @@ This repository contains machine learning models implemented from scratch using 
 | Logistic Regression From Scratch | [Logistic_Regression](Logistic_Regression) | Classifies breast cancer samples using sigmoid activation and gradient descent. |
 | Ridge Regression From Scratch | [RidgeRegression_From_Scratch](RidgeRegression_From_Scratch) | Implements ridge regression with L2 regularization using the closed-form solution and compares it with scikit-learn. |
 | Neural Network From Scratch | [Neural_Network_From_Scratch](Neural_Network_From_Scratch) | Classifies handwritten digits using a simple feedforward neural network built with NumPy. |
+| K-Nearest Neighbors From Scratch | [KNN](KNN) | Classifies a new point by calculating Euclidean distances and using majority voting among nearest neighbors. |
 
 ## Repository Structure
 
@@ -28,6 +29,9 @@ ModelsFromscratch/
 |   +-- README.md
 +-- Neural_Network_From_Scratch/
 |   +-- NeuralNetworkFromScracth.ipynb
+|   +-- README.md
++-- KNN/
+|   +-- KNN_from_scratch.ipynb
 |   +-- README.md
 +-- README.md
 ```
