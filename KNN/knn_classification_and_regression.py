@@ -1,9 +1,5 @@
 import numpy as np 
 from collections import Counter
-
-
-
-
 class KNN:
     def __init__(self,K=3,task="classification"):
         self.K = K
@@ -40,4 +36,61 @@ class KNN:
         return predictions
 
 
-      
+X_train = [
+    [1, 1],
+    [1, 2],
+    [2, 1],
+    [8, 8],
+    [9, 8],
+    [8, 9]
+]
+
+y_train = [
+    "A",
+    "A",
+    "A",
+    "B",
+    "B",
+    "B"
+]
+
+X_test = [
+    [2, 2],
+    [8, 8]
+]
+
+knn = KNN(K=3, task="classification")
+
+knn.fit(X_train, y_train)
+
+predictions = knn.predict_multiple(X_test)
+
+print(predictions)
+X_train = [
+    [1],
+    [2],
+    [3],
+    [4],
+    [5]
+]
+
+y_train = [
+    10,
+    20,
+    30,
+    40,
+    50
+]
+
+X_test = [
+    [2.5],
+    [4.5]
+]
+
+knn = KNN(K=2, task="regression")
+
+knn.fit(X_train, y_train)
+
+predictions = knn.predict_multiple(X_test)
+
+print(predictions)
