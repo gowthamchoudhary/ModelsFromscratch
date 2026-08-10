@@ -34,15 +34,6 @@ class KNN:
         neighbors = self.calculate_neighbors(k_indices)
         k_distances = distances[k_indices]
         
-        # if self.task=="classification":
-        #     # predicted_class = Counter(neighbors).most_common(1)[0][0]
-        #     predicted_class = max(weights,key=weights.get)
-        #     return predicted_class
-        # else:
-        #     predicted_value=0
-        #     for i in range(self.K):
-        #         predicted_value=+((weights[i]*neighbors[i])/weights[i])
-        #     return predicted_value
         if self.task == "classification":
             if self.weighted:
                 class_weights = self.calculate_weights(k_distances,neighbors)
