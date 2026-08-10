@@ -1,10 +1,10 @@
 import numpy as np 
 from collections import Counter
 class KNN:
-    def __init__(self,K=3,task="classification"):
+    def __init__(self,K=3,task="classification",weighted=True):
         self.K = K
         self.task = task
-
+        self.weighted = weighted
         self.X_train = None
         self.y_train = None
     def fit(self,x,y):
@@ -17,18 +17,51 @@ class KNN:
         for i in locs:
             neighbors.append(self.y_train[i])
         return neighbors
+    def calculate_weights(self,k_distances,neighbors):
+        
+        weights = {}
+        for lable,distance in zip(neighbors,k_distances):
+            weight = 1/distance
+            if lable not in weights:
+                weights[lable]=0
+            weights[lable]+=weight
+        return weights     
         
     def predict_one(self,X):
         
         distances = self.calculate_distance(X)
         k_indices = np.argsort(distances)[:self.K]
         neighbors = self.calculate_neighbors(k_indices)
+        k_distances = distances[k_indices]
         
-        if self.task=="classification":
-            predicted_class = Counter(neighbors).most_common(1)[0][0]
-            return predicted_class
+        # if self.task=="classification":
+        #     # predicted_class = Counter(neighbors).most_common(1)[0][0]
+        #     predicted_class = max(weights,key=weights.get)
+        #     return predicted_class
+        # else:
+        #     predicted_value=0
+        #     for i in range(self.K):
+        #         predicted_value=+((weights[i]*neighbors[i])/weights[i])
+        #     return predicted_value
+        if self.task == "classification":
+            if self.weighted:
+                class_weights = self.calculate_weights(k_distances,neighbors)
+                predicted_class = max(class_weights,key=class_weights.get)
+                return predicted_class
+            else:
+                predicted_class = Counter(neighbors).most_common(1)[0][0]
         else:
-            return np.mean(neighbors)
+            if self.weighted:
+                weights = 1/k_distances
+                neighbors = np.array(neighbors,dtype=float)
+                predicted_value = (
+                    np.sum(weights*neighbors)/np.sum(weights)
+
+                )
+                return predicted_value
+            else:
+                return np.mean(neighbors)
+            
     def predict_multiple(self,X_test):
         predictions = []
         for i in X_test:
