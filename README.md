@@ -11,6 +11,7 @@ This repository contains machine learning models implemented from scratch using 
 | Ridge Regression From Scratch | [RidgeRegression_From_Scratch](RidgeRegression_From_Scratch) | Implements ridge regression with L2 regularization using the closed-form solution and compares it with scikit-learn. |
 | Neural Network From Scratch | [Neural_Network_From_Scratch](Neural_Network_From_Scratch) | Classifies handwritten digits using a simple feedforward neural network built with NumPy. |
 | K-Nearest Neighbors From Scratch | [KNN](KNN) | Classifies a new point by calculating Euclidean distances and using majority voting among nearest neighbors. |
+| Naive Bayes From Scratch | [Naive_Bayes](Naive_Bayes) | Classifies text sentiment using class priors, word likelihoods, and Laplace smoothing. |
 
 ## Repository Structure
 
@@ -32,13 +33,17 @@ ModelsFromscratch/
 |   +-- README.md
 +-- KNN/
 |   +-- KNN_from_scratch.ipynb
+|   +-- knn_classification_and_regression.py
+|   +-- README.md
++-- Naive_Bayes/
+|   +-- naive_bayes_classification.py
 |   +-- README.md
 +-- README.md
 ```
 
 ## Requirements
 
-The notebooks use common Python data science libraries:
+The notebooks and scripts use common Python data science libraries:
 
 - Python
 - NumPy
@@ -56,8 +61,8 @@ pip install numpy pandas matplotlib scikit-learn
 
 1. Open the folder for the model you want to study.
 2. Read that folder's `README.md` for the model explanation.
-3. Open the notebook in Jupyter Notebook, JupyterLab, or Google Colab.
-4. Run the notebook cells from top to bottom.
+3. Open the notebook in Jupyter Notebook, JupyterLab, or Google Colab, or run the Python script from that folder.
+4. Run the notebook cells from top to bottom or execute the script with Python.
 
 ## Goal
 
