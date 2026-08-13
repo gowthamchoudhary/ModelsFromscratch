@@ -12,6 +12,7 @@ This repository contains machine learning models implemented from scratch using 
 | Neural Network From Scratch | [Neural_Network_From_Scratch](Neural_Network_From_Scratch) | Classifies handwritten digits using a simple feedforward neural network built with NumPy. |
 | K-Nearest Neighbors From Scratch | [KNN](KNN) | Classifies a new point by calculating Euclidean distances and using majority voting among nearest neighbors. |
 | Naive Bayes From Scratch | [Naive_Bayes](Naive_Bayes) | Classifies text sentiment using class priors, word likelihoods, and Laplace smoothing. |
+| Gaussian Naive Bayes From Scratch | [Gaussian_Naive_Bayes](Gaussian_Naive_Bayes) | Classifies breast cancer samples using class-wise Gaussian likelihoods, priors, means, and variances. |
 
 ## Repository Structure
 
@@ -37,6 +38,9 @@ ModelsFromscratch/
 |   +-- README.md
 +-- Naive_Bayes/
 |   +-- naive_bayes_classification.py
+|   +-- README.md
++-- Gaussian_Naive_Bayes/
+|   +-- Gaussian_Naive_Bayes.ipynb
 |   +-- README.md
 +-- README.md
 ```
