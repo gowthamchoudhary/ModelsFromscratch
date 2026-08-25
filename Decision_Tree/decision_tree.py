@@ -24,10 +24,15 @@ class Decision_Tree_Classifier:
         gini_prob_right = self.Gini(self.class_prob(right_y))
         l  = len(left_y)+len(right_y)
         return ((len(left_y)/l)*gini_prob_left + (len(right_y)/l)*gini_prob_right)
-    def cal_Threshold(self,x_feature):
+    def cal_Threshold(self, x_feature):
         x_feature = np.asarray(x_feature)
-        x_feature.sort()
-        mp = [(x_feature[j]+x_feature[j+1])/2 for j in range(len(x_feature)-1)]
+        x_feature = np.sort(x_feature)
+
+        mp = [
+            (x_feature[j] + x_feature[j + 1]) / 2
+            for j in range(len(x_feature) - 1)
+        ]
+
         return mp
 
     def class_prob(self,y):
@@ -146,10 +151,90 @@ class Decision_Tree_Classifier:
 
         return np.asarray(predictions)  
 
+X_train = np.array([
+    [18, 20000,  5, 70, 1],
+    [20, 22000,  6, 72, 1],
+    [21, 25000,  7, 75, 1],
+    [22, 28000,  8, 78, 2],
+    [24, 30000, 10, 80, 2],
+    [25, 35000, 11, 82, 2],
+    [26, 40000, 12, 85, 3],
+    [27, 42000, 13, 87, 3],
+    [28, 45000, 14, 88, 4],
+    [30, 48000, 15, 90, 4],
+    [32, 52000, 16, 91, 5],
+    [35, 60000, 18, 94, 5],
+    [19, 21000,  5, 68, 1],
+    [23, 27000,  9, 79, 2],
+    [29, 46000, 14, 89, 4],
+    [31, 50000, 15, 90, 4],
+    [34, 58000, 17, 93, 5],
+    [36, 65000, 19, 95, 6],
+    [40, 70000, 20, 96, 6],
+    [42, 75000, 21, 97, 7]
+])
 
-    
+y_train = np.array([
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+])
 
-    
+
+tree = Decision_Tree_Classifier(max_depth=4)
+tree.fit(X_train, y_train)
+
+X_test = np.array([
+    [19, 23000,  6, 71, 1],
+    [23, 29000,  9, 79, 2],
+    [26, 39000, 12, 84, 3],
+    [29, 47000, 14, 89, 4],
+    [33, 55000, 16, 92, 5],
+    [38, 68000, 19, 95, 6],
+    [21, 26000,  7, 74, 1],
+    [27, 43000, 13, 86, 3],
+    [35, 62000, 18, 94, 5],
+    [41, 72000, 21, 97, 7]
+])
 
 
+predictions = tree.predict(X_test)
 
+print("Predictions:")
+print(predictions)
+y_test = np.array([
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0,
+    1,
+    1,
+    1
+])
+
+print("Predicted:", predictions)
+print("Actual:   ", y_test)
+
+accuracy = np.mean(predictions == y_test)
+
+print("Accuracy:", accuracy)
