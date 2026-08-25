@@ -65,6 +65,88 @@ class Decision_Tree_Classifier:
                 best_threshold= threshold
                 best_feature = feature
         return best_feature,best_threshold,best_gini
+    def majority_class(self,y):
+        classes,counts = np.unique(y,return_counts=True)
+        return classes[np.argmax(counts)]
+    def fit(self,x_train,y_train,):
+        self.x_train  = x_train
+        self.y_train = y_train
+        self.classes = np.unique(y_train)
+        self.root = self.Build_the_tree(x_train,y_train,0)
+    
+    def Build_the_tree(self,X,y,depth):
+        if len(np.unique(y))==1:
+            return Node(prediction=y[0])
+        if self.max_depth is not None  and depth>=self.max_depth:
+            return Node(prediction=self.majority_class(y))
+        best_feature,best_threshold,best_gini = self.find_best_split(X,y)
+        left_mask = (
+            X[:, best_feature] < best_threshold
+        )
+
+        right_mask = (
+            X[:, best_feature] >= best_threshold
+        )
+        X_left = X[left_mask]
+        y_left = y[left_mask]
+
+        X_right = X[right_mask]
+        y_right = y[right_mask]
+        left_node = self.Build_the_tree(
+            X_left,
+            y_left,
+            depth + 1
+        )
+        right_node = self.Build_the_tree(
+            X_right,
+            y_right,
+            depth + 1
+        )
+        return Node(
+            feature=best_feature,
+            threshold=best_threshold,
+            left_node=left_node,
+            right_node=right_node
+        )
+    def _predict_one(self, x, node):
+
+    
+        if node.prediction is not None:
+
+            return node.prediction
+
+       
+        if x[node.feature] < node.threshold:
+
+            return self._predict_one(
+                x,
+                node.left_node
+            )
+
+       
+        return self._predict_one(
+            x,
+            node.right_node
+        )
+
+    def predict(self, X):
+
+        X = np.asarray(X)
+
+        predictions = []
+
+        for x in X:
+
+            prediction = self._predict_one(
+                x,
+                self.root
+            )
+
+            predictions.append(prediction)
+
+        return np.asarray(predictions)  
+
+
     
 
     
