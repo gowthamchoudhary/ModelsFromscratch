@@ -51,6 +51,22 @@ class Decision_Tree_Classifier:
         best_threshold = threshold_candidates[best_index]
         best_gini = final_gini_scores[best_index]
         return best_threshold , best_gini
+
+    def find_best_split(self,x_train,y):
+        best_threshold = None
+        best_feature = None
+        best_gini=float("inf")
+
+        for feature in range(x_train.shape[1]):
+            x_feature = x_train[:,feature]
+            threshold , gini = self.best_split(x_feature,y)
+            if gini<best_gini:
+                best_gini = gini
+                best_threshold= threshold
+                best_feature = feature
+        return best_feature,best_threshold,best_gini
+    
+
     
 
 
