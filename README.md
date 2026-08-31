@@ -13,6 +13,7 @@ This repository contains machine learning models implemented from scratch using 
 | K-Nearest Neighbors From Scratch | [KNN](KNN) | Classifies a new point by calculating Euclidean distances and using majority voting among nearest neighbors. |
 | Naive Bayes From Scratch | [Naive_Bayes](Naive_Bayes) | Classifies text sentiment using class priors, word likelihoods, and Laplace smoothing. |
 | Gaussian Naive Bayes From Scratch | [Gaussian_Naive_Bayes](Gaussian_Naive_Bayes) | Classifies breast cancer samples using class-wise Gaussian likelihoods, priors, means, and variances. |
+| LiDAR Semantic Sense From Scratch | [LiDAR_Semantic_Sense](LiDAR_Semantic_Sense) | Explains semantic understanding for LiDAR point clouds using point features, labels, and classification ideas. |
 
 ## Repository Structure
 
@@ -41,6 +42,8 @@ ModelsFromscratch/
 |   +-- README.md
 +-- Gaussian_Naive_Bayes/
 |   +-- Gaussian_Naive_Bayes.ipynb
+|   +-- README.md
++-- LiDAR_Semantic_Sense/
 |   +-- README.md
 +-- README.md
 ```
