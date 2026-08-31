@@ -13,9 +13,10 @@ class Node:
 
 
 class DecisionTree:
-    def __call__(self, max_depth, root):
+    def __call__(self, max_depth=3,max_features=None):
         self.max_depth = max_depth
-        self.root = root
+        self.max_features = max_features
+        self.root = None
     def gini_impurity(self,y):
         classes , count = np.unique(y,return_counts=True)
         prob = count/len(y)
@@ -51,13 +52,29 @@ class DecisionTree:
                 best_gini = score
                 best_threshold = threshold
         return best_threshold,best_gini
-    def find_best_split(self,X,y):
+    def find_best_split(self, X, y):
+
+        best_feature = None
         best_threshold = None
         best_gini = float("inf")
-        best_feature = None
-        for feature in range(X.shape[1]):
 
-            threshold,gini = self.best_split_for_feature(
+        n_features = X.shape[1]
+
+        if self.max_features is None:
+
+            feature_indices = np.arange(n_features)
+
+        else:
+
+            feature_indices = np.random.choice(
+                n_features,
+                size=self.max_features,
+                replace=False
+            )
+
+        for feature in feature_indices:
+
+            threshold, gini = self.best_split_for_feature(
                 X,
                 y,
                 feature
@@ -65,10 +82,11 @@ class DecisionTree:
 
             if gini < best_gini:
 
-                best_feature = feature
-                best_threshold = threshold
                 best_gini = gini
-        return best_feature,best_threshold,best_gini
+                best_threshold = threshold
+                best_feature = feature
+
+        return best_feature, best_threshold, best_gini
     def majority_class(self,y):
         classes,count = np.unique(y,return_counts=True)
         return classes[np.argmax(count)]
@@ -135,4 +153,30 @@ class DecisionTree:
 
         
 class RandomForest:
-    pass
+    def __init__(self,n_trees=0,max_depth=0):
+        self.n_trees = n_trees
+        self.max_depth = max_depth
+        self.trees = []
+    def Bootstrap_sample(self,X,y):
+        n_samples = X.shape[0]
+        indices = np.random.choice(
+            n_samples,
+            size=n_samples
+            ,
+            replace=True
+        )
+        return X[indices],y[indices]
+    def fit(self,X,y):
+        trees = []
+        for _ in range(self.n_trees):
+
+            X_sample, y_sample = self.bootstrap_sample(X, y)
+
+            tree = DecisionTree(
+                max_depth=self.max_depth,
+                max_features=self.max_features
+            )
+
+            tree.fit(X_sample, y_sample)
+
+            self.trees.append(tree)
