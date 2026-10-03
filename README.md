@@ -15,7 +15,7 @@ This repository contains machine learning models and supporting formulas impleme
 | Gaussian Naive Bayes From Scratch | [Gaussian_Naive_Bayes](Gaussian_Naive_Bayes) | Classifies breast cancer samples using class-wise Gaussian likelihoods, priors, means, and variances. |
 | Decision Tree Classifier From Scratch | [Decision_Tree](Decision_Tree) | Builds a binary classification tree by selecting splits with weighted Gini impurity. |
 | Random Forest Classifier From Scratch | [Random_forest](Random_forest) | Combines bootstrapped decision trees and majority voting for multiclass classification. |
-| Support Vector Machines From Scratch | [SVM](SVM) | Includes soft-margin gradient descent and hard-margin constrained-optimization implementations. |
+| Support Vector Machines From Scratch | [SVM](SVM) | Includes soft-margin gradient descent, polynomial-kernel, and hard-margin constrained-optimization implementations. |
 | Euclidean Distance Formula | [formulas](formulas) | Implements the distance calculation used by distance-based models. |
 | LiDAR Semantic Sense From Scratch | [LiDAR_Semantic_Sense](LiDAR_Semantic_Sense) | Explains semantic understanding for LiDAR point clouds using point features, labels, and classification ideas. |
 
@@ -55,6 +55,7 @@ ModelsFromscratch/
 |   +-- README.md
 +-- SVM/
 |   +-- svm_from_scratch_soft_margin_gd.py
+|   +-- svm_from_scratch_poly_kernel.py
 |   +-- svm_from_scratch_hardmargin_no_gradient.py
 |   +-- README.md
 +-- formulas/
