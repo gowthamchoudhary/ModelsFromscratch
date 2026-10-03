@@ -1,12 +1,13 @@
 # Support Vector Machines From Scratch
 
-This folder contains two binary linear Support Vector Machine (SVM) implementations. Both expect a numeric feature matrix `X` with shape `(n_samples, n_features)` and labels encoded as `-1` and `1`.
+This folder contains three Support Vector Machine (SVM) implementations. All of them expect a numeric feature matrix `X` with shape `(n_samples, n_features)` and labels encoded as `-1` and `1`.
 
 ## Implementations
 
 | File | Approach | Dependencies |
 | --- | --- | --- |
 | [svm_from_scratch_soft_margin_gd.py](svm_from_scratch_soft_margin_gd.py) | Soft-margin SVM trained with batch gradient descent on a hinge-loss objective | NumPy |
+| [svm_from_scratch_poly_kernel.py](svm_from_scratch_poly_kernel.py) | Polynomial-kernel SVM using a kernelized formulation to model nonlinear decision boundaries | NumPy |
 | [svm_from_scratch_hardmargin_no_gradient.py](svm_from_scratch_hardmargin_no_gradient.py) | Hard-margin SVM formulated as a constrained optimization problem | NumPy, SciPy |
 
 ## Soft-Margin SVM
@@ -22,6 +23,18 @@ predictions = model.predict(X_test)
 ```
 
 The decision rule is `sign(X @ w + b)`, returned as `-1` or `1`.
+
+## Polynomial-Kernel SVM
+
+The polynomial-kernel version extends the basic SVM idea by replacing the linear dot product with a polynomial kernel, which allows the model to capture nonlinear relationships in the data.
+
+```python
+from svm_from_scratch_poly_kernel import SVM_poly_kernel
+
+model = SVM_poly_kernel(degree=3, C=1.0, learning_rate=0.01, epochs=2000)
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+```
 
 ## Hard-Margin SVM
 
